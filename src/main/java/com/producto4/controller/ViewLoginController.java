@@ -21,6 +21,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import org.hibernate.Query;
 import org.hibernate.Session;
+import org.hibernate.criterion.Restrictions;
 
 /**
  * FXML Controller class
@@ -54,48 +55,42 @@ public class ViewLoginController implements Initializable  {
 
     @FXML
     private void login(ActionEvent event) {
+        checklogin();
+    }  
+     
+
+    private void checklogin(){
         
-        String nombre = username_login.getText().toString();
-        String pass = password_login.getText().toString();
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
+        Query q= session.createQuery("from Usuario");
+        Usuario usuario_login = (Usuario) q.list().get(0);
+        session.getTransaction().commit();        
+        
+    if (username_login.getText().toString().equals(usuario_login) && password_login.getText().toString().equals("aa")) {
+    System.out.println("Correcto");
+    } else {
+    System.out.println("InCorrecto");
+            }
+    }
+}
+            
+    
+  
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         
        
-        //listadoUsuarios();
-        guardarsede();
         
-    }
+       
     
-    public static List<Usuario> listadoUsuarios() {
-        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-        session.beginTransaction();
-        List<Usuario> result = (List<Usuario>)session.createQuery("from Usuario").list();
-        session.getTransaction().commit();
-        for (Usuario usuario : result) {
-            System.out.println("Usuario: " + usuario.toString());
-        }
-        return result;
-    }
-    
-    public static void guardarsede () {
-            
-        Session session = HibernateUtil.getSessionFactory().openSession();
-
-        session.beginTransaction();
-
-        Proyecto proyecto = new Proyecto(1,"Madrid", new Date(2017,10,22), new Date(2019,10,22)); 
-        session.save(proyecto);
-
-        session.save(new Sede(1, "Madrid", "Central" ));
-        session.save(new Sede(2,"Valencia", "Delegacion" ));
-
-        session.getTransaction().commit();
-
-        Query q = session.createQuery("From Sede ");
-
-        List<Sede> resultList = q.list();
-        System.out.println("num of sede:" + resultList.size());
-        for (Sede next : resultList) {
-            System.out.println("next sede: " + next);
-        }
-    }
-    
-}

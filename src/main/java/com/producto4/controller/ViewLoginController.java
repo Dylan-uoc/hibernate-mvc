@@ -65,9 +65,11 @@ public class ViewLoginController implements Initializable  {
         session.beginTransaction();
         Query q= session.createQuery("from Usuario");
         Usuario usuario_login = (Usuario) q.list().get(0);
+        System.out.println(usuario_login.getUsuario());
+        usuario_login.getUsuario();
         session.getTransaction().commit();        
         
-    if (username_login.getText().toString().equals(usuario_login) && password_login.getText().toString().equals("aa")) {
+    if (username_login.getText().toString().equals(usuario_login.getUsuario()) && password_login.getText().toString().equals("aa")) {
     System.out.println("Correcto");
     } else {
     System.out.println("InCorrecto");

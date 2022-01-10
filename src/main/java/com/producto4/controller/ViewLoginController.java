@@ -61,29 +61,48 @@ public class ViewLoginController implements Initializable  {
 
     private void checklogin(){
         
+        String user_login= username_login.getText().toString();
+        String pass_login= password_login.getText().toString();
+        
         Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
-        Query q= session.createQuery("from Usuario");
+        Query q= session.createQuery("from Usuario u where u.usuario=:userlogin");
+        q.setParameter("userlogin",user_login);
         Usuario usuario_login = (Usuario) q.list().get(0);
-        System.out.println(usuario_login.getPassword());
-        usuario_login.getUsuario();
-        session.getTransaction().commit();        
+        System.out.println(usuario_login.getUsuario());
+        System.out.println(usuario_login.getAdministrador());
+        usuario_login.getUsuario();        
+        session.getTransaction().commit();  
+       
+        int admin = usuario_login.getAdministrador();
         
-    if (username_login.getText().toString().equals(usuario_login.getUsuario()) && password_login.getText().toString().equals(usuario_login.getPassword())) {
-    System.out.println("Correcto");
-    } else {
-    System.out.println("InCorrecto");
+        if (q.list().size()>0){
+            
+            if (pass_login.equals(usuario_login.getPassword())){
+                
+                if (admin==1){
+                    System.out.println("admin");
+                    
+                } else {
+                    System.out.println("usuario");
+
+                }
+                
+            } else {
+                System.out.println("contraseña no existe");
             }
+
+            
+        } else {
+            System.out.println("El usuario no existe");
+        }
     }
 }
-            
     
   
         
         
-        
-        
-        
+    
         
         
         

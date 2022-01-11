@@ -1,3 +1,4 @@
+
 package com.producto4.model;
 // Generated 9 ene. 2022 16:34:58 by Hibernate Tools 4.3.1
 

@@ -74,15 +74,34 @@ public class UsuarioDaoImpl implements Dao <Usuario>{
     Query q= session.createQuery("from Usuario u where u.usuario=:user_login");
     q.setParameter("userlogin",usuario_insertado);
     session.getTransaction().commit();
-        
-        
-        return false;
-        
+      session.close();        
+        if (q.list().size()>0){
+            insertado=true;
+            
+        } else {
+            
+        }
+        return insertado;
     }
 
     @Override
     public boolean eliminar(Usuario obj) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    boolean insertado=true;
+        String usuario_insertado= obj.getUsuario().toString();
+
+    Session session = HibernateUtil.getSessionFactory().openSession();
+    session.beginTransaction();
+    session.delete(obj);
+    Query q= session.createQuery("from Usuario u where u.usuario=:user_login");
+    q.setParameter("userlogin",usuario_insertado);
+    session.getTransaction().commit();
+    session.close();        
+        if (q.list().size()!=0){
+            insertado=false;
+            
+        } else {
+         
+        }
+        return insertado;
     }
-    
 }

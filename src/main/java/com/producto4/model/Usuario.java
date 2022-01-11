@@ -40,8 +40,10 @@ public class Usuario  implements java.io.Serializable {
      private String usuario;
     @Column(name = "puesto")
      private String puesto;
-    @Column(name = "idSede")
-     private short idSede;
+    @Column(name = "Sede")
+     private String sede;
+    @Column (name="Proyecto")
+    private String proyecto;
     @Column(name = "tipoEmpleado")
      private String tipoEmpleado;
     @Column(name = "salario")

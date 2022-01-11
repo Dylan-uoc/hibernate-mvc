@@ -11,6 +11,7 @@ import com.producto4.model.HibernateUtil;
 import com.producto4.model.Proyecto;
 import com.producto4.model.Sede;
 import com.producto4.model.Usuario;
+import java.io.IOException;
 
 import java.net.URL;
 import java.util.Date;
@@ -55,12 +56,12 @@ public class ViewLoginController implements Initializable  {
     }    
 
     @FXML
-    private void login(ActionEvent event) {
+    private void login(ActionEvent event) throws IOException {
         checklogin();
     }  
      
 
-    private void checklogin(){
+    private void checklogin() throws IOException{
         Main m= new Main();
         
         String user_login= username_login.getText().toString();
@@ -83,7 +84,7 @@ public class ViewLoginController implements Initializable  {
             if (pass_login.equals(usuario_login.getPassword())){
                 
                 if (admin==1){
-                    m.changeScene()
+                    m.changeScene("/fxml/ViewAdmin.fxml");
                     
                 } else {
                     System.out.println("usuario");

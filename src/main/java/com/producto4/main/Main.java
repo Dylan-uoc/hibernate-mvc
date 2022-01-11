@@ -17,16 +17,23 @@ import javafx.fxml.*;
  * @author rojaw
  */
 public class Main extends Application {
+    private static Stage stg;
 
     @Override
     public void start(Stage primaryStage) throws IOException {
-        
+        stg =primaryStage;
+        primaryStage.setResizable(false);
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/ViewLogin.fxml"));
-
         Scene scene = new Scene(root);
         primaryStage.setScene(scene);
         primaryStage.show();
 
+    }
+    
+    public void changeScene(String fmxl) throws IOException {
+    Parent pane = FXMLLoader.load(getClass().getResource(fmxl));
+    stg.getScene().setRoot(pane);
+    
     }
 
     /**

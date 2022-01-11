@@ -6,6 +6,7 @@
 package com.producto4.controller;
 
 
+import com.producto4.main.Main;
 import com.producto4.model.HibernateUtil;
 import com.producto4.model.Proyecto;
 import com.producto4.model.Sede;
@@ -60,6 +61,7 @@ public class ViewLoginController implements Initializable  {
      
 
     private void checklogin(){
+        Main m= new Main();
         
         String user_login= username_login.getText().toString();
         String pass_login= password_login.getText().toString();
@@ -81,7 +83,7 @@ public class ViewLoginController implements Initializable  {
             if (pass_login.equals(usuario_login.getPassword())){
                 
                 if (admin==1){
-                    System.out.println("admin");
+                    m.changeScene()
                     
                 } else {
                     System.out.println("usuario");
@@ -89,12 +91,12 @@ public class ViewLoginController implements Initializable  {
                 }
                 
             } else {
-                System.out.println("contraseña no existe");
+                wrong_login.setText("Contraseña errónea");
             }
 
             
         } else {
-            System.out.println("El usuario no existe");
+            wrong_login.setText("Usuario no existe");
         }
     }
 }

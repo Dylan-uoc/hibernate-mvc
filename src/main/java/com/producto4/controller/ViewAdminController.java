@@ -5,8 +5,14 @@
  */
 package com.producto4.controller;
 
+import com.producto4.factory.ProyectoDaoFactory;
+import com.producto4.factory.SedeDaoFactory;
 import com.producto4.factory.UsuarioDaoFactory;
+import com.producto4.impl.ProyectoDaoImpl;
+import com.producto4.impl.SedeDaoImpl;
 import com.producto4.impl.UsuarioDaoImpl;
+import com.producto4.model.Proyecto;
+import com.producto4.model.Sede;
 import com.producto4.model.Usuario;
 import java.io.IOException;
 import java.net.URL;
@@ -123,7 +129,7 @@ public class ViewAdminController implements Initializable {
     @FXML
     private void agregar_usuario_button(ActionEvent event) throws Exception {
              
-        if (validateInputs()) {
+        if (validateInputs("usuario")) {
             Usuario usuario_agregado = createUserFromInput();
             UsuarioDaoFactory factory = new UsuarioDaoFactory();
 	    UsuarioDaoImpl userdao = factory.crearUsuarioDao();
@@ -164,25 +170,51 @@ public class ViewAdminController implements Initializable {
         return user;
     }
 
-    private boolean validateInputs() {
-        if (usuario_ui.getText().equals("")) {
-            warning_ui.setText("Debes escribir un usuario");
+    private boolean validateInputs(String target) {
+        if(target.equals("usuario")) {
+
+            if (usuario_ui.getText().equals("")) {
+                warning_ui.setText("Debes escribir un usuario");
+                return false;
+            }
+
+            if (fechaNacimiento_ui.getValue() == null) {
+                warning_ui.setText("*Debes de añadir una fecha de nacimiento");
+                return false;
+            }
+
+            if (pass_ui.getText().equals("")) {
+                warning_ui.setText("*Debes asignarle una password!");
+                return false;
+            }
+
+            return true;
+
+        } else if(target.equals("sede")) {
+
+            if (sede_ubicacion_ui.getText().equals("")) {
+                warning_ui.setText("Debes escribir una ubicación para la sede");
+                return false;
+            }
+
+            return true;
+
+        } else if(target.equals("proyecto")){
+
+            if (proyecto_ubicacion_ui.getText().equals("")) {
+                warning_ui.setText("Debes escribir una ubicación para el proyecto");
+                return false;
+            }
+
+            return true;
+
+        } else {
             return false;
         }
 
-        if (fechaNacimiento_ui.getValue() == null) {
-            warning_ui.setText("*Debes de añadir una fecha de nacimiento");
-            return false;
-        }
-
-        if (pass_ui.getText().equals("")) {
-            warning_ui.setText("*Debes asignarle una password!");
-            return false;
-        }
-        return true;
     }
         
-    }
+
 
     @FXML
     private void eliminar_sede_button(ActionEvent event) {
@@ -194,6 +226,29 @@ public class ViewAdminController implements Initializable {
 
     @FXML
     private void agregar_sede_button(ActionEvent event) {
+        if (validateInputs("sede")) {
+            Sede sede_agregada = createSedeFromInput();
+            SedeDaoFactory sede = new SedeDaoFactory();
+            SedeDaoImpl sededao = sede.crearSedeDao();
+            boolean isSaved = false;
+            try {
+                isSaved = sededao.registrar(sede_agregada);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            if (isSaved) {
+                alert_ui.setText("Sede añadida");
+            }
+        }
+    }
+
+    private Sede createSedeFromInput() {
+        Sede sede = new Sede();
+
+        sede.setTipo(sede_tipo_ui.getText());
+        sede.setUbicacion(sede_ubicacion_ui.getText());
+
+        return sede;
     }
 
     @FXML
@@ -206,6 +261,38 @@ public class ViewAdminController implements Initializable {
 
     @FXML
     private void agregar_proyecto_button(ActionEvent event) {
+        if (validateInputs("proyecto")) {
+            Proyecto proyecto_agregado = createProyectoFromInput();
+            ProyectoDaoFactory proyecto = new ProyectoDaoFactory();
+            ProyectoDaoImpl proyectodao = proyecto.crearProyectoDao();
+            boolean isSaved = false;
+            try {
+                isSaved = proyectodao.registrar(proyecto_agregado);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            if (isSaved) {
+                alert_ui.setText("Proyecto añadido");
+            }
+        }
+    }
+
+    private Proyecto createProyectoFromInput() {
+        Proyecto proyecto = new Proyecto();
+
+        LocalDate localDate = proyecto_inicio_ui.getValue();
+        Instant instant = Instant.from(localDate.atStartOfDay(ZoneId.systemDefault()));
+        Date date = Date.from(instant);
+        proyecto.setFechaInicio(date);
+
+        LocalDate endLocalDate = proyecto_final_ui.getValue();
+        Instant endInstant = Instant.from(endLocalDate.atStartOfDay(ZoneId.systemDefault()));
+        Date endDate = Date.from(endInstant);
+        proyecto.setFechaFinal(endDate);
+
+        proyecto.setUbicacion(sede_ubicacion_ui.getText());
+
+        return proyecto;
     }
     
     

@@ -12,26 +12,26 @@ public class SedeDaoImpl implements Dao <Sede> {
 
     @Override
     public boolean registrar(Sede obj) throws Exception {
-        boolean insertado=false;
+        boolean insertado=true;
         Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
 
         String ubicacion_sede= obj.getUbicacion();
 
-        Sede newSede = (Sede) session.save(obj); //<|--- Aqui guardamos el objeto en la base de datos.
+        session.save(obj); //<|--- Aqui guardamos el objeto en la base de datos.
 
         session.getTransaction().commit();
         // En el caso de que no funcione se deberá utilizar dos parámetros como la fecha de inicio y la ubicación para obtener el proyecto
         // que acabamos de crear
-        Query q= session.createQuery("from Sede s where s.id=:id_sede");
-        q.setParameter("id_sede", newSede.getId());
+       /* Query q= session.createQuery("from Sede s where s.id=:id_sede");
+        q.setParameter("id_sede", obj.getId());
         session.close();
-        if (q.list().size()>0){
+        /*if (q.list().size()>0){
             insertado=true;
 
         } else {
 
-        }
+        }*/
         return insertado;
     }
 

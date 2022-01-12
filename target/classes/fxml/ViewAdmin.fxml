@@ -128,8 +128,8 @@
                                                       <TableColumn fx:id="id_usuario_column" prefWidth="75.0" text="ID_USUARIO" />
                                                       <TableColumn fx:id="nombre_usuario_column" prefWidth="75.0" text="Nombre" />
                                                       <TableColumn prefWidth="75.0" text="Apellido" />
-                                                      <TableColumn prefWidth="68.0" text="Correo" />
-                                                      <TableColumn minWidth="9.0" prefWidth="82.0" text="FechaNacimiento" />
+                                                      <TableColumn prefWidth="62.0" text="Correo" />
+                                                      <TableColumn minWidth="9.0" prefWidth="88.0" text="FechaNacimiento" />
                                                       <TableColumn prefWidth="75.0" text="Usuario" />
                                                       <TableColumn prefWidth="75.0" text="Password" />
                                                       <TableColumn prefWidth="75.0" text="Administrador" />
@@ -214,7 +214,7 @@
                                              <content>
                                                 <TableView fx:id="SedeTable" maxHeight="16000.0" maxWidth="16000.0" prefHeight="428.0" prefWidth="294.0" tableMenuButtonVisible="true">
                                                    <columns>
-                                                      <TableColumn prefWidth="75.0" text="ID_SEDE" />
+                                                      <TableColumn fx:id="id_sede_column" prefWidth="75.0" text="ID_SEDE" />
                                                       <TableColumn prefWidth="75.0" text="Ubicacion" />
                                                       <TableColumn prefWidth="75.0" text="Tipo" />
                                                    </columns>

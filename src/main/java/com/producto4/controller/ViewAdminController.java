@@ -11,6 +11,7 @@ import com.producto4.factory.UsuarioDaoFactory;
 import com.producto4.impl.ProyectoDaoImpl;
 import com.producto4.impl.SedeDaoImpl;
 import com.producto4.impl.UsuarioDaoImpl;
+import com.producto4.model.HibernateUtil;
 import com.producto4.model.Proyecto;
 import com.producto4.model.Sede;
 import com.producto4.model.Usuario;
@@ -22,6 +23,7 @@ import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
@@ -34,9 +36,15 @@ import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.MapValueFactory;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.cell.TextFieldTableCell;
+import org.hibernate.Query;
+import org.hibernate.Session;
 
 /**
  * FXML Controller class
@@ -45,6 +53,7 @@ import javafx.scene.control.TextField;
  */
 public class ViewAdminController implements Initializable {
     ObservableList<Map<String, Object>> items;
+    
 
     @FXML
     private TextField name_ui;
@@ -115,16 +124,43 @@ public class ViewAdminController implements Initializable {
     @FXML
     private TextField seleccion_id;
     @FXML
-    private TableColumn<Map, String> id_usuario_column;
+    private TableColumn<Usuario, String> id_usuario_column;
+    @FXML
+    private TableColumn<Usuario, String> nombre_usuario_column;
+    @FXML
+    private TableColumn<Map, String> id_sede_column;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        fillTable();
     }    
 
+        private void fillTable() {
+        SedeTable.getItems().clear();    
+        id_sede_column.setCellValueFactory(new MapValueFactory<>("ID_SEDE"));
+
+	   	ObservableList<Map<String, Object>> items =
+	   	    FXCollections.<Map<String, Object>>observableArrayList();
+
+	   	Map<String, Object> item1;
+                Session session = HibernateUtil.getSessionFactory().openSession();
+                Query q = session.createQuery("From Sede");
+
+        List<Sede> resultList = q.list();
+        for (Sede next : resultList) {
+            item1 = new HashMap<>();
+	   	item1.put("ID_SEDE", next.getId());
+
+	   	items.add(item1);
+        }
+        SedeTable.getItems().addAll(items);
+        
+    }
+        
+    
     @FXML
     private void eliminar_usuario_button(ActionEvent event) {
     }
@@ -132,22 +168,12 @@ public class ViewAdminController implements Initializable {
     @FXML
     private void seleccionar_button (ActionEvent event) { 
     
-    items = FXCollections.<Map<String, Object>>observableArrayList();
-
-    Map<String, Object> item1 = new HashMap<>();
-    item1.put("ID_USUARIO", "Randall");
-    //item1.put("lastName" , "Kovic");
-
-    items.add(item1);
-
-    /*Map<String, Object> item2 = new HashMap<>();
-    item2.put("firstName", "Irmelin");
-    item2.put("lastName" , "Satoshi");
-
-    items.add(item2);*/
-
-    UserTable.getItems().addAll(items);
-        
+    int id_seleccionado= Integer.parseInt(seleccion_id.getText());
+    Session session = HibernateUtil.getSessionFactory().openSession();
+            Query q = session.createQuery("From Usuario");
+            Usuario u = (Usuario) q.list().get(0);
+            
+            
     }
        
         
@@ -274,8 +300,9 @@ public class ViewAdminController implements Initializable {
                 alert_ui.setText("Sede añadida");
             }
         }
+        fillTable();
     }
-
+    
     private Sede createSedeFromInput() {
         Sede sede = new Sede();
 

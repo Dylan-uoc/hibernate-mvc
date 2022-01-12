@@ -25,7 +25,7 @@ public class UsuarioDaoImpl implements Dao <Usuario>{
     public boolean registrar(Usuario obj) throws Exception {
         boolean insertado=false;
         Session session = HibernateUtil.getSessionFactory().openSession();
-    session.beginTransaction();
+        session.beginTransaction();
  
     String usuario_insertado= obj.getUsuario().toString();
     

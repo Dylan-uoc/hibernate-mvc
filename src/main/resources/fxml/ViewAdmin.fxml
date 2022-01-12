@@ -1,11 +1,328 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.producto4.controller.ViewAdminController">
     
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="508.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <AnchorPane prefHeight="18.0" prefWidth="600.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <children>
+            <Label alignment="CENTER" text="Administrador" textAlignment="CENTER" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+         </children>
+      </AnchorPane>
+      <TabPane id="UserTable" layoutX="100.0" layoutY="108.0" prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="18.0">
+        <tabs>
+          <Tab text="Usuarios">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <GridPane layoutX="171.0" layoutY="132.0" maxHeight="16000.0" maxWidth="16000.0" prefHeight="104.0" prefWidth="223.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                                 <children>
+                                    <GridPane layoutX="78.0" layoutY="7.0" maxHeight="16000.0" maxWidth="16000.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                      <columnConstraints>
+                                        <ColumnConstraints hgrow="ALWAYS" maxWidth="16000.0" minWidth="10.0" prefWidth="149.40001220703124" />
+                                          <ColumnConstraints hgrow="ALWAYS" maxWidth="16000.0" minWidth="10.0" prefWidth="150.19998779296878" />
+                                      </columnConstraints>
+                                      <rowConstraints>
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="NEVER" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
+                                      </rowConstraints>
+                                       <children>
+                                          <TextField fx:id="name_ui" maxWidth="10000.0" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" />
+                                          <Label maxHeight="10.0" maxWidth="16000.0" text="ID_USUARIO" GridPane.columnIndex="1" />
+                                          <Label maxHeight="10.0" maxWidth="16000.0" text="Algun ID" />
+                                          <Label maxHeight="10.0" maxWidth="16000.0" text="Nombre" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                          <Button fx:id="eliminar_usuario_ui" maxWidth="16000.0" mnemonicParsing="false" onAction="#eliminar_usuario_button" text="Eliminar Usuario" GridPane.columnIndex="1" GridPane.rowIndex="15" />
+                                          <Button fx:id="modificar_usuario_ui" maxWidth="16000.0" mnemonicParsing="false" onAction="#modificar_usuario_button" text="Modificar Usuario" GridPane.columnSpan="2" GridPane.rowIndex="16" />
+                                          <TextField fx:id="apellido_ui" maxWidth="10000.0" GridPane.rowIndex="2" />
+                                          <Label maxHeight="10.0" maxWidth="16000.0" text="Apellido" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                          <Label maxHeight="10.0" maxWidth="16000.0" text="Correo" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                          <TextField fx:id="correo_ui" maxWidth="10000.0" GridPane.rowIndex="3" />
+                                          <DatePicker fx:id="fechaNacimiento_ui" GridPane.rowIndex="4" />
+                                          <Label maxHeight="10.0" maxWidth="16000.0" text="FechaNacimiento" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                                          <Label maxHeight="10.0" maxWidth="16000.0" text="Usuario" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                                          <Label maxHeight="10.0" maxWidth="16000.0" text="Puesto" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+                                          <TextField fx:id="usuario_ui" maxWidth="10000.0" GridPane.rowIndex="5" />
+                                          <TextField fx:id="puesto_ui" maxWidth="10000.0" GridPane.rowIndex="9" />
+                                          <Label maxHeight="10.0" maxWidth="16000.0" text="Sede" GridPane.columnIndex="1" GridPane.rowIndex="10" />
+                                          <Label maxHeight="10.0" maxWidth="16000.0" text="Proyecto" GridPane.columnIndex="1" GridPane.rowIndex="11" />
+                                          <Label maxHeight="10.0" maxWidth="16000.0" prefHeight="0.0" prefWidth="47.0" text="TipoEmpleado" GridPane.columnIndex="1" GridPane.rowIndex="12" />
+                                          <Label maxHeight="10.0" maxWidth="16000.0" prefHeight="0.0" prefWidth="47.0" text="Salario" GridPane.columnIndex="1" GridPane.rowIndex="13" />
+                                          <Label maxHeight="10.0" maxWidth="16000.0" prefHeight="0.0" prefWidth="47.0" text="Territorio" GridPane.columnIndex="1" GridPane.rowIndex="14" />
+                                          <TextField fx:id="sede_ui" maxWidth="10000.0" GridPane.rowIndex="10" />
+                                          <TextField fx:id="proyecto_ui" maxWidth="10000.0" GridPane.rowIndex="11" />
+                                          <TextField fx:id="tipoEmpleado_ui" maxWidth="10000.0" GridPane.rowIndex="12" />
+                                          <TextField fx:id="salario_ui" maxWidth="10000.0" GridPane.rowIndex="13" />
+                                          <TextField fx:id="territorio_ui" maxWidth="10000.0" GridPane.rowIndex="14" />
+                                          <Label maxHeight="10.0" maxWidth="16000.0" text="Password" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                                          <TextField fx:id="pass_ui" maxWidth="10000.0" GridPane.rowIndex="6" />
+                                          <CheckBox fx:id="admin_ui" maxHeight="16000.0" maxWidth="16000.0" mnemonicParsing="false" text="Administrador" GridPane.columnSpan="2" GridPane.hgrow="ALWAYS" GridPane.rowIndex="7" />
+                                          <Label maxHeight="10.0" maxWidth="16000.0" text="DNI" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+                                          <TextField fx:id="DNI_ui" maxWidth="10000.0" prefHeight="10.0" prefWidth="150.0" GridPane.rowIndex="8" />
+                                          <Button fx:id="agregar_usuario_ui" maxWidth="16000.0" mnemonicParsing="false" onAction="#agregar_usuario_button" text="Agregar Usuario" GridPane.rowIndex="15" />
+                                          <Label fx:id="warning_ui" textFill="#b20202" GridPane.rowIndex="1">
+                                             
+                                          </Label>
+                                          <Label fx:id="alert_ui" prefHeight="17.0" prefWidth="185.0" textFill="#00a80e" GridPane.rowIndex="17">
+                                             
+                                          </Label>
+                                       </children>
+                                    </GridPane>
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane GridPane.columnIndex="1">
+                                 <children>
+                                    <GridPane layoutX="62.0" layoutY="219.0" maxHeight="16000.0" maxWidth="16000.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                      <columnConstraints>
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                      </columnConstraints>
+                                      <rowConstraints>
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                      </rowConstraints>
+                                       <children>
+                                          <TextField maxWidth="10000.0" GridPane.rowIndex="1" />
+                                          <Button maxWidth="16000.0" mnemonicParsing="false" text="Seleccionar" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                          <ScrollPane maxHeight="16000.0" maxWidth="16000.0" GridPane.columnSpan="2" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS">
+                                             <content>
+                                                <TableView id="UserTable" fx:id="UserTable" maxHeight="16000.0" maxWidth="16000.0" prefHeight="428.0" prefWidth="294.0" tableMenuButtonVisible="true">
+                                                   <columns>
+                                                      <TableColumn prefWidth="75.0" text="ID_USUARIO" />
+                                                      <TableColumn prefWidth="75.0" text="Nombre" />
+                                                      <TableColumn prefWidth="75.0" text="Apellido" />
+                                                      <TableColumn prefWidth="75.0" text="Correo" />
+                                                      <TableColumn prefWidth="75.0" text="FechaNacimiento" />
+                                                      <TableColumn prefWidth="75.0" text="Usuario" />
+                                                      <TableColumn prefWidth="75.0" text="Password" />
+                                                      <TableColumn prefWidth="75.0" text="Administrador" />
+                                                      <TableColumn prefWidth="75.0" text="DNI" />
+                                                      <TableColumn prefWidth="75.0" text="Puesto" />
+                                                      <TableColumn prefWidth="75.0" text="Sede" />
+                                                      <TableColumn prefWidth="75.0" text="Proyecto" />
+                                                      <TableColumn prefWidth="75.0" text="TipoEmpleado" />
+                                                      <TableColumn prefWidth="75.0" text="Salario" />
+                                                      <TableColumn prefWidth="75.0" text="Territorio" />
+                                                   </columns>
+                                                </TableView>
+                                             </content>
+                                          </ScrollPane>
+                                       </children>
+                                    </GridPane>
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </GridPane>
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+          <Tab text="Sedes">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <GridPane maxHeight="16000.0" maxWidth="16000.0" prefHeight="104.0" prefWidth="223.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <children>
+                              <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                                 <children>
+                                    <GridPane layoutX="78.0" layoutY="7.0" maxHeight="16000.0" maxWidth="16000.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                       <columnConstraints>
+                                          <ColumnConstraints hgrow="ALWAYS" maxWidth="16000.0" minWidth="10.0" prefWidth="149.40001220703124" />
+                                          <ColumnConstraints hgrow="ALWAYS" maxWidth="16000.0" minWidth="10.0" prefWidth="150.19998779296878" />
+                                       </columnConstraints>
+                                       <rowConstraints>
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="NEVER" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
+                                       </rowConstraints>
+                                       <children>
+                                          <TextField fx:id="sede_ubicacion_ui" maxWidth="10000.0" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" />
+                                          <Label maxHeight="10.0" maxWidth="16000.0" text="ID_SEDE" GridPane.columnIndex="1" />
+                                          <Label maxHeight="10.0" maxWidth="16000.0" text="Algun ID" />
+                                          <Label maxHeight="10.0" maxWidth="16000.0" text="Ubicacion" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                          <Button fx:id="eliminar_sede_ui" maxWidth="16000.0" mnemonicParsing="false" onAction="#eliminar_sede_button" text="Eliminar Sede" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                          <Button fx:id="modificar_sede_ui" maxWidth="16000.0" mnemonicParsing="false" onAction="#modificar_sede_button" text="Modificar Sede" GridPane.columnSpan="2" GridPane.rowIndex="4" />
+                                          <TextField fx:id="sede_tipo_ui" maxWidth="10000.0" GridPane.rowIndex="2" />
+                                          <Label maxHeight="10.0" maxWidth="16000.0" text="Tipo" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                          <Button fx:id="agregar_sede_ui" maxWidth="16000.0" mnemonicParsing="false" onAction="#agregar_sede_button" text="Agregar Sede" GridPane.rowIndex="3" />
+                                       </children>
+                                    </GridPane>
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane GridPane.columnIndex="1">
+                                 <children>
+                                    <GridPane layoutX="62.0" layoutY="219.0" maxHeight="16000.0" maxWidth="16000.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                       <columnConstraints>
+                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                       </columnConstraints>
+                                       <rowConstraints>
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                       </rowConstraints>
+                                       <children>
+                                          <TextField maxWidth="10000.0" GridPane.rowIndex="1" />
+                                          <Button maxWidth="16000.0" mnemonicParsing="false" text="Seleccionar" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                          <ScrollPane maxHeight="16000.0" maxWidth="16000.0" GridPane.columnSpan="2" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS">
+                                             <content>
+                                                <TableView fx:id="SedeTable" maxHeight="16000.0" maxWidth="16000.0" prefHeight="428.0" prefWidth="294.0" tableMenuButtonVisible="true">
+                                                   <columns>
+                                                      <TableColumn prefWidth="75.0" text="ID_SEDE" />
+                                                      <TableColumn prefWidth="75.0" text="Ubicacion" />
+                                                      <TableColumn prefWidth="75.0" text="Tipo" />
+                                                   </columns>
+                                                </TableView>
+                                             </content>
+                                          </ScrollPane>
+                                       </children>
+                                    </GridPane>
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </GridPane>
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+            <Tab text="Proyectos">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <GridPane maxHeight="16000.0" maxWidth="16000.0" prefHeight="104.0" prefWidth="223.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <children>
+                              <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                                 <children>
+                                    <GridPane layoutX="78.0" layoutY="7.0" maxHeight="16000.0" maxWidth="16000.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                       <columnConstraints>
+                                          <ColumnConstraints hgrow="ALWAYS" maxWidth="16000.0" minWidth="10.0" prefWidth="149.40001220703124" />
+                                          <ColumnConstraints hgrow="ALWAYS" maxWidth="16000.0" minWidth="10.0" prefWidth="150.19998779296878" />
+                                       </columnConstraints>
+                                       <rowConstraints>
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="NEVER" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
+                                       </rowConstraints>
+                                       <children>
+                                          <TextField fx:id="proyecto_ubicacion_ui" maxWidth="10000.0" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" />
+                                          <Label maxHeight="10.0" maxWidth="16000.0" text="ID_PROYECTO" GridPane.columnIndex="1" />
+                                          <Label maxHeight="10.0" maxWidth="16000.0" text="Algun ID" />
+                                          <Label maxHeight="10.0" maxWidth="16000.0" text="Ubicacion" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                          <Button fx:id="eliminar_proyecto_ui" maxWidth="16000.0" mnemonicParsing="false" onAction="#eliminar_proyecto_button" text="Eliminar Proyecto" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                                          <Button fx:id="modificar_proyecto_ui" maxWidth="16000.0" mnemonicParsing="false" onAction="#modificar_proyecto_button" text="Modificar Proyecto" GridPane.columnSpan="2" GridPane.rowIndex="5" />
+                                          <Label maxHeight="10.0" maxWidth="16000.0" text="FechaInicio" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                          <Button fx:id="agregar_proyecto_ui" maxWidth="16000.0" mnemonicParsing="false" onAction="#agregar_proyecto_button" text="Agregar Proyecto" GridPane.rowIndex="4" />
+                                          <DatePicker fx:id="proyecto_inicio_ui" GridPane.rowIndex="2" />
+                                          <DatePicker fx:id="proyecto_final_ui" GridPane.rowIndex="3" />
+                                          <Label maxHeight="10.0" maxWidth="16000.0" text="FechaFinal" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                       </children>
+                                    </GridPane>
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane GridPane.columnIndex="1">
+                                 <children>
+                                    <GridPane layoutX="62.0" layoutY="219.0" maxHeight="16000.0" maxWidth="16000.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                       <columnConstraints>
+                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                       </columnConstraints>
+                                       <rowConstraints>
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                       </rowConstraints>
+                                       <children>
+                                          <TextField maxWidth="10000.0" GridPane.rowIndex="1" />
+                                          <Button maxWidth="16000.0" mnemonicParsing="false" text="Seleccionar" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                          <ScrollPane maxHeight="16000.0" maxWidth="16000.0" GridPane.columnSpan="2" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS">
+                                             <content>
+                                                <TableView fx:id="ProyectTable" maxHeight="16000.0" maxWidth="16000.0" prefHeight="428.0" prefWidth="294.0" tableMenuButtonVisible="true">
+                                                   <columns>
+                                                      <TableColumn prefWidth="75.0" text="ID_PROYECTO" />
+                                                      <TableColumn prefWidth="75.0" text="FechaInicio" />
+                                                      <TableColumn prefWidth="75.0" text="FechaFinal" />
+                                                   </columns>
+                                                </TableView>
+                                             </content>
+                                          </ScrollPane>
+                                       </children>
+                                    </GridPane>
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </GridPane>
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
+        </tabs>
+      </TabPane>
+   </children>
 </AnchorPane>

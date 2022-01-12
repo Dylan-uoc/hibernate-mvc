@@ -9,6 +9,7 @@ import org.hibernate.Session;
 import java.util.List;
 
 public class SedeDaoImpl implements Dao <Sede> {
+
     @Override
     public boolean registrar(Sede obj) throws Exception {
         boolean insertado=false;
@@ -22,7 +23,7 @@ public class SedeDaoImpl implements Dao <Sede> {
         session.getTransaction().commit();
         // En el caso de que no funcione se deberá utilizar dos parámetros como la fecha de inicio y la ubicación para obtener el proyecto
         // que acabamos de crear
-        Query q= session.createQuery("from Proyecto p where p.id=:id_sede");
+        Query q= session.createQuery("from Sede s where s.id=:id_sede");
         q.setParameter("id_sede", newSede.getId());
         session.close();
         if (q.list().size()>0){

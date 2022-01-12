@@ -15,7 +15,12 @@ import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import static javafx.collections.FXCollections.observableArrayList;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -23,6 +28,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 
@@ -32,6 +38,7 @@ import javafx.scene.control.TextField;
  * @author rojaw
  */
 public class ViewAdminController implements Initializable {
+    ObservableList<Map<String, Object>> items;
 
     @FXML
     private TextField name_ui;
@@ -68,7 +75,7 @@ public class ViewAdminController implements Initializable {
     @FXML
     private Button agregar_usuario_ui;
     @FXML
-    private TableView<?> UserTable;
+    private TableView UserTable;
     @FXML
     private TextField sede_ubicacion_ui;
     @FXML
@@ -80,7 +87,7 @@ public class ViewAdminController implements Initializable {
     @FXML
     private Button agregar_sede_ui;
     @FXML
-    private TableView<?> SedeTable;
+    private TableView SedeTable;
     @FXML
     private TextField proyecto_ubicacion_ui;
     @FXML
@@ -94,11 +101,15 @@ public class ViewAdminController implements Initializable {
     @FXML
     private DatePicker proyecto_final_ui;
     @FXML
-    private TableView<?> ProyectTable;
+    private TableView ProyectTable;
     @FXML
     private Label warning_ui;
     @FXML 
     private Label alert_ui;
+    @FXML
+    private TextField seleccion_id;
+    @FXML
+    private TableColumn<Map, String> id_usuario_column;
 
     /**
      * Initializes the controller class.
@@ -110,15 +121,36 @@ public class ViewAdminController implements Initializable {
 
     @FXML
     private void eliminar_usuario_button(ActionEvent event) {
+    }
+    
+    @FXML
+    private void seleccionar_button (ActionEvent event) { 
+    
+    items = FXCollections.<Map<String, Object>>observableArrayList();
+
+    Map<String, Object> item1 = new HashMap<>();
+    item1.put("ID_USUARIO", "Randall");
+    //item1.put("lastName" , "Kovic");
+
+    items.add(item1);
+
+    /*Map<String, Object> item2 = new HashMap<>();
+    item2.put("firstName", "Irmelin");
+    item2.put("lastName" , "Satoshi");
+
+    items.add(item2);*/
+
+    UserTable.getItems().addAll(items);
         
+    }
        
         
-        
-    }
 
     @FXML
-    private void modificar_usuario_button(ActionEvent event) {
+    private void modificar_usuario_button(ActionEvent event) throws Exception {
     }
+
+       
 
     @FXML
     private void agregar_usuario_button(ActionEvent event) throws Exception {
@@ -182,18 +214,18 @@ public class ViewAdminController implements Initializable {
         return true;
     }
         
-    }
+    
 
     @FXML
     private void eliminar_sede_button(ActionEvent event) {
     }
 
     @FXML
-    private void modificar_sede_button(ActionEvent event) {
+   private void modificar_sede_button(ActionEvent event) {
     }
 
     @FXML
-    private void agregar_sede_button(ActionEvent event) {
+   private void agregar_sede_button(ActionEvent event) {
     }
 
     @FXML

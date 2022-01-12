@@ -275,6 +275,13 @@ public class ViewAdminController implements Initializable {
     
     @FXML
     private void eliminar_usuario_button(ActionEvent event) {
+         if (validateInputs("usuario")) {
+            Usuario usuario_agregado = createUserFromInput();
+            UsuarioDaoFactory factory = new UsuarioDaoFactory();
+	    UsuarioDaoImpl userdao = factory.crearUsuarioDao();
+            userdao.eliminar(usuario_agregado);
+            //filltable_usuario();
+        }
     }
     
     @FXML
@@ -282,9 +289,28 @@ public class ViewAdminController implements Initializable {
     
     int id_seleccionado= Integer.parseInt(seleccion_id.getText());
     Session session = HibernateUtil.getSessionFactory().openSession();
-            Query q = session.createQuery("From Usuario");
+            Query q = session.createQuery("from Usuario u where u.id=:id_seleccionado ");
+            q.setParameter("id_seleccionado",id_seleccionado );
             Usuario u = (Usuario) q.list().get(0);
+            apellido_ui.setText(u.getApellido());
+            name_ui.setText(u.getNombre());
+            correo_ui.setText(u.getCorreo());
+            usuario_ui.setText(u.getUsuario());
+            pass_ui.setText(u.getPassword());
+            DNI_ui.setText(u.getDni());
+            puesto_ui.setText(u.getPuesto());
+            sede_ui.setText(u.getSede());
+            proyecto_ui.setText(u.getProyecto());
+            tipoEmpleado_ui.setText(u.getTipoEmpleado());
+            salario_ui.setText(u.getSalario().toString());
+            territorio_ui.setText(u.getTerritorio());
             
+            int admin_check= u.getAdministrador();
+            if(admin_check==1){
+            admin_ui.selectedProperty();
+        } else {
+        }
+                  
             
     }
        
@@ -292,6 +318,13 @@ public class ViewAdminController implements Initializable {
 
     @FXML
     private void modificar_usuario_button(ActionEvent event) throws Exception {
+     if (validateInputs("usuario")) {
+            Usuario usuario_agregado = createUserFromInput();
+            UsuarioDaoFactory factory = new UsuarioDaoFactory();
+	    UsuarioDaoImpl userdao = factory.crearUsuarioDao();
+            userdao.actualizar(usuario_agregado);
+            //filltable_usuario();
+        }
     }
 
        
@@ -324,10 +357,12 @@ public class ViewAdminController implements Initializable {
         user.setApellido(apellido_ui.getText());
         user.setCorreo(correo_ui.getText());
         user.setDni(DNI_ui.getText());
+        //
         LocalDate localDate = fechaNacimiento_ui.getValue();
         Instant instant = Instant.from(localDate.atStartOfDay(ZoneId.systemDefault()));
         Date date = Date.from(instant);
         user.setFechaNacimiento(date);
+        //
         user.setNombre(name_ui.getText());
         user.setPassword(pass_ui.getText());
         user.setProyecto(proyecto_ui.getText());
@@ -388,17 +423,33 @@ public class ViewAdminController implements Initializable {
 
 
     @FXML
-    private void eliminar_sede_button(ActionEvent event) {
+    private void eliminar_sede_button(ActionEvent event) throws Exception {
+       if (validateInputs("sede")) {
+            Sede sede_agregada = createSedeFromInput();
+            SedeDaoFactory sede = new SedeDaoFactory();
+            SedeDaoImpl sededao = sede.crearSedeDao();
+            sededao.registrar(sede_agregada);
+           
+        }
+        fillTable();
     }
 
     @FXML
-   private void modificar_sede_button(ActionEvent event) {
-    }
+   private void modificar_sede_button(ActionEvent event) throws Exception {
+       
+       if (validateInputs("sede")) {
+            Sede sede_agregada = createSedeFromInput();
+            SedeDaoFactory sede = new SedeDaoFactory();
+            SedeDaoImpl sededao = sede.crearSedeDao();
+            sededao.eliminar(sede_agregada);
+            }
+       fillTable();
+        }
+        
+       
+    
 
     @FXML
-
-
-
     private void agregar_sede_button(ActionEvent event) {
         if (validateInputs("sede")) {
             Sede sede_agregada = createSedeFromInput();
@@ -429,11 +480,28 @@ public class ViewAdminController implements Initializable {
 
     @FXML
     private void eliminar_proyecto_button(ActionEvent event) {
+         if (validateInputs("proyecto")) {
+         Proyecto proyecto_agregado = createProyectoFromInput();
+         ProyectoDaoFactory proyecto = new ProyectoDaoFactory();
+         ProyectoDaoImpl proyectodao = proyecto.crearProyectoDao();
+         proyectodao.eliminar(proyecto_agregado);
+            
+            }
+        //fillTable_proyecto();
+        
     }
 
     @FXML
     private void modificar_proyecto_button(ActionEvent event) {
-    }
+        if (validateInputs("proyecto")) {
+            Proyecto proyecto_agregado = createProyectoFromInput();
+            ProyectoDaoFactory proyecto = new ProyectoDaoFactory();
+            ProyectoDaoImpl proyectodao = proyecto.crearProyectoDao();
+            proyectodao.actualizar(proyecto_agregado);
+            
+            }
+        //fillTable_proyecto();
+        }
 
     @FXML
     private void agregar_proyecto_button(ActionEvent event) {

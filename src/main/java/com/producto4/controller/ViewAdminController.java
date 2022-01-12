@@ -124,11 +124,46 @@ public class ViewAdminController implements Initializable {
     @FXML
     private TextField seleccion_id;
     @FXML
-    private TableColumn<Usuario, String> id_usuario_column;
-    @FXML
-    private TableColumn<Usuario, String> nombre_usuario_column;
-    @FXML
     private TableColumn<Map, String> id_sede_column;
+    @FXML
+    private TableColumn<Map, String> id_proyecto_column;
+    @FXML
+    private TableColumn<Map, String> fecha_inicio_column;
+    @FXML
+    private TableColumn<Map, String> fecha_final_column;
+    @FXML
+    private TableColumn<Map, String> id_usuario_column;
+    @FXML
+    private TableColumn<Map, String> nombre_usuario_column;
+    @FXML
+    private TableColumn<Map, String> apellido_usuario_column;
+    @FXML
+    private TableColumn<Map, String> correo_usuario_column;
+    @FXML
+    private TableColumn<Map, String> _usuario_column;
+    @FXML
+    private TableColumn<Map, String> fecha_usuario_column;
+    @FXML
+    private TableColumn<Map, String> user_usuario_column;
+    @FXML
+    private TableColumn<Map, String> password_usuario_column;
+    @FXML
+    private TableColumn<Map, String> admin_usuario_column;
+    @FXML
+    private TableColumn<Map, String> dni_usuario_column;
+    @FXML
+    private TableColumn<Map, String> puesto_usuario_column;
+    @FXML
+    private TableColumn<Map, String> sede_usuario_column;
+    @FXML
+    private TableColumn<Map, String> proyecto_usuario_column;
+    @FXML
+    private TableColumn<Map, String> tipo_usuario_column;
+    @FXML
+    private TableColumn<Map, String> salario_usuario_column;
+    @FXML
+    private TableColumn<Map, String> territorio_usuario_column;
+
 
     /**
      * Initializes the controller class.
@@ -136,9 +171,11 @@ public class ViewAdminController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         fillTable();
+        fillTableProyecto();
+        fillTableUsuario();
     }    
 
-        private void fillTable() {
+    private void fillTable() {
         SedeTable.getItems().clear();    
         id_sede_column.setCellValueFactory(new MapValueFactory<>("ID_SEDE"));
 
@@ -158,6 +195,81 @@ public class ViewAdminController implements Initializable {
         }
         SedeTable.getItems().addAll(items);
         
+    }
+
+    private void fillTableUsuario() {
+        UserTable.getItems().clear();
+        id_usuario_column.setCellValueFactory(new MapValueFactory<>("ID_USUARIO"));
+        nombre_usuario_column.setCellValueFactory(new MapValueFactory<>("NOMBRE_USUARIO"));
+        apellido_usuario_column.setCellValueFactory(new MapValueFactory<>("APELLIDO_USUARIO"));
+        correo_usuario_column.setCellValueFactory(new MapValueFactory<>("CORREO_USUARIO"));
+        fecha_usuario_column.setCellValueFactory(new MapValueFactory<>("FECHA_USUARIO"));
+        user_usuario_column.setCellValueFactory(new MapValueFactory<>("USER_USUARIO"));
+        password_usuario_column.setCellValueFactory(new MapValueFactory<>("PASSWORD_USUARIO"));
+        admin_usuario_column.setCellValueFactory(new MapValueFactory<>("ADMIN_USUARIO"));
+        dni_usuario_column.setCellValueFactory(new MapValueFactory<>("DNI_USUARIO"));
+        puesto_usuario_column.setCellValueFactory(new MapValueFactory<>("PUESTO_USUARIO"));
+        sede_usuario_column.setCellValueFactory(new MapValueFactory<>("SEDE_USUARIO"));
+        proyecto_usuario_column.setCellValueFactory(new MapValueFactory<>("PROYECTO_USUARIO"));
+        tipo_usuario_column.setCellValueFactory(new MapValueFactory<>("TIPO_USUARIO"));
+        salario_usuario_column.setCellValueFactory(new MapValueFactory<>("SALARIO_USUARIO"));
+        territorio_usuario_column.setCellValueFactory(new MapValueFactory<>("TERRITORIO_USUARIO"));
+
+        ObservableList<Map<String, Object>> items =
+                FXCollections.<Map<String, Object>>observableArrayList();
+
+        Map<String, Object> item1;
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Query q = session.createQuery("From User");
+
+        List<Usuario> resultList = q.list();
+        for (Usuario next : resultList) {
+            item1 = new HashMap<>();
+            item1.put("ID_USUARIO", next.getId());
+            item1.put("NOMBRE_USUARIO", next.getNombre());
+            item1.put("APELLIDO_USUARIO", next.getApellido());
+            item1.put("CORREO_USUARIO", next.getCorreo());
+            item1.put("FECHA_USUARIO", next.getFechaNacimiento());
+            item1.put("USER_USUARIO", next.getUsuario());
+            item1.put("PASSWORD_USUARIO", next.getPassword());
+            item1.put("ADMIN_USUARIO", next.getAdministrador());
+            item1.put("DNI_USUARIO", next.getDni());
+            item1.put("PUESTO_USUARIO", next.getPuesto());
+            item1.put("SEDE_USUARIO", next.getSede());
+            item1.put("PROYECTO_USUARIO", next.getProyecto());
+            item1.put("TIPO_USUARIO", next.getTipoEmpleado());
+            item1.put("SALARIO_USUARIO", next.getSalario());
+            item1.put("TERRITORIO_USUARIO", next.getTerritorio());
+
+            items.add(item1);
+        }
+        UserTable.getItems().addAll(items);
+
+    }
+
+    private void fillTableProyecto() {
+        ProyectTable.getItems().clear();
+        id_proyecto_column.setCellValueFactory(new MapValueFactory<>("ID_PROYECTO"));
+        fecha_final_column.setCellValueFactory(new MapValueFactory<>("FECHA_FIN_PROYECTO"));
+        fecha_inicio_column.setCellValueFactory(new MapValueFactory<>("FECHA_INICIO_PROYECTO"));
+
+        ObservableList<Map<String, Object>> items =
+                FXCollections.<Map<String, Object>>observableArrayList();
+
+        Map<String, Object> item1;
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Query q = session.createQuery("From Proyecto");
+
+        List<Proyecto> resultList = q.list();
+        for (Proyecto next : resultList) {
+            item1 = new HashMap<>();
+            item1.put("ID_PROYECTO", next.getId());
+            item1.put("FECHA_FIN_PROYECTO", next.getFechaFinal());
+            item1.put("FECHA_INICIO_PROYECTO", next.getFechaInicio());
+            items.add(item1);
+        }
+        SedeTable.getItems().addAll(items);
+
     }
         
     
@@ -196,6 +308,8 @@ public class ViewAdminController implements Initializable {
                 alert_ui.setText("Usuario añadido");
             }
         }
+
+        fillTableUsuario();
     }
 
 
@@ -337,6 +451,7 @@ public class ViewAdminController implements Initializable {
                 alert_ui.setText("Proyecto añadido");
             }
         }
+        fillTableProyecto();
     }
 
     private Proyecto createProyectoFromInput() {

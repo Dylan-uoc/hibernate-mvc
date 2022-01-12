@@ -127,19 +127,19 @@
                                                    <columns>
                                                       <TableColumn fx:id="id_usuario_column" prefWidth="75.0" text="ID_USUARIO" />
                                                       <TableColumn fx:id="nombre_usuario_column" prefWidth="75.0" text="Nombre" />
-                                                      <TableColumn prefWidth="75.0" text="Apellido" />
-                                                      <TableColumn prefWidth="62.0" text="Correo" />
-                                                      <TableColumn minWidth="9.0" prefWidth="88.0" text="FechaNacimiento" />
-                                                      <TableColumn prefWidth="75.0" text="Usuario" />
-                                                      <TableColumn prefWidth="75.0" text="Password" />
-                                                      <TableColumn prefWidth="75.0" text="Administrador" />
-                                                      <TableColumn prefWidth="75.0" text="DNI" />
-                                                      <TableColumn prefWidth="75.0" text="Puesto" />
-                                                      <TableColumn prefWidth="75.0" text="Sede" />
-                                                      <TableColumn prefWidth="75.0" text="Proyecto" />
-                                                      <TableColumn prefWidth="75.0" text="TipoEmpleado" />
-                                                      <TableColumn prefWidth="75.0" text="Salario" />
-                                                      <TableColumn prefWidth="75.0" text="Territorio" />
+                                                      <TableColumn fx:id="apellido_usuario_column" prefWidth="75.0" text="Apellido" />
+                                                      <TableColumn fx:id="correo_usuario_column" prefWidth="62.0" text="Correo" />
+                                                      <TableColumn fx:id="fecha_usuario_column" minWidth="9.0" prefWidth="88.0" text="FechaNacimiento" />
+                                                      <TableColumn fx:id="user_usuario_column" prefWidth="75.0" text="Usuario" />
+                                                      <TableColumn fx:id="password_usuario_column" prefWidth="75.0" text="Password" />
+                                                      <TableColumn fx:id="admin_usuario_column" prefWidth="75.0" text="Administrador" />
+                                                      <TableColumn fx:id="dni_usuario_column" prefWidth="75.0" text="DNI" />
+                                                      <TableColumn fx:id="puesto_usuario_column" prefWidth="75.0" text="Puesto" />
+                                                      <TableColumn fx:id="sede_usuario_column" prefWidth="75.0" text="Sede" />
+                                                      <TableColumn fx:id="proyecto_usuario_column" prefWidth="75.0" text="Proyecto" />
+                                                      <TableColumn fx:id="tipo_usuario_column" prefWidth="75.0" text="TipoEmpleado" />
+                                                      <TableColumn fx:id="salario_usuario_column" prefWidth="75.0" text="Salario" />
+                                                      <TableColumn fx:id="territorio_usuario_column" prefWidth="75.0" text="Territorio" />
                                                    </columns>
                                                 </TableView>
                                              </content>
@@ -294,9 +294,9 @@
                                              <content>
                                                 <TableView fx:id="ProyectTable" maxHeight="16000.0" maxWidth="16000.0" prefHeight="428.0" prefWidth="294.0" tableMenuButtonVisible="true">
                                                    <columns>
-                                                      <TableColumn prefWidth="75.0" text="ID_PROYECTO" />
-                                                      <TableColumn prefWidth="75.0" text="FechaInicio" />
-                                                      <TableColumn prefWidth="75.0" text="FechaFinal" />
+                                                      <TableColumn fx:id="id_proyecto_column" prefWidth="75.0" text="ID_PROYECTO" />
+                                                      <TableColumn fx:id="fecha_inicio_column" prefWidth="75.0" text="FechaInicio" />
+                                                      <TableColumn fx:id="fecha_final_column" prefWidth="75.0" text="FechaFinal" />
                                                    </columns>
                                                 </TableView>
                                              </content>

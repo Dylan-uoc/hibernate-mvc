@@ -6,10 +6,12 @@
 package com.producto4.controller;
 
 
+import com.producto4.main.Main;
 import com.producto4.model.HibernateUtil;
 import com.producto4.model.Proyecto;
 import com.producto4.model.Sede;
 import com.producto4.model.Usuario;
+import java.io.IOException;
 
 import java.net.URL;
 import java.util.Date;
@@ -54,36 +56,56 @@ public class ViewLoginController implements Initializable  {
     }    
 
     @FXML
-    private void login(ActionEvent event) {
+    private void login(ActionEvent event) throws IOException {
         checklogin();
     }  
      
 
-    private void checklogin(){
+    private void checklogin() throws IOException{
+        Main m= new Main();
+        
+        String user_login= username_login.getText().toString();
+        String pass_login= password_login.getText().toString();
         
         Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
-        Query q= session.createQuery("from Usuario");
+        Query q= session.createQuery("from Usuario u where u.usuario=:userlogin");
+        q.setParameter("userlogin",user_login);
         Usuario usuario_login = (Usuario) q.list().get(0);
-        System.out.println(usuario_login.getPassword());
-        usuario_login.getUsuario();
-        session.getTransaction().commit();        
+        System.out.println(usuario_login.getUsuario());
+        System.out.println(usuario_login.getAdministrador());
+        usuario_login.getUsuario();        
+        session.getTransaction().commit();  
+       
+        int admin = usuario_login.getAdministrador();
         
-    if (username_login.getText().toString().equals(usuario_login.getUsuario()) && password_login.getText().toString().equals(usuario_login.getPassword())) {
-    System.out.println("Correcto");
-    } else {
-    System.out.println("InCorrecto");
+        if (q.list().size()>0){
+            
+            if (pass_login.equals(usuario_login.getPassword())){
+                
+                if (admin==1){
+                    m.changeScene("/fxml/ViewAdmin.fxml");
+                    
+                } else {
+                    System.out.println("usuario");
+
+                }
+                
+            } else {
+                wrong_login.setText("Contraseña errónea");
             }
+
+            
+        } else {
+            wrong_login.setText("Usuario no existe");
+        }
     }
 }
-            
     
   
         
         
-        
-        
-        
+    
         
         
         

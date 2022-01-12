@@ -40,8 +40,10 @@ public class Usuario  implements java.io.Serializable {
      private String usuario;
     @Column(name = "puesto")
      private String puesto;
-    @Column(name = "idSede")
-     private short idSede;
+    @Column(name = "Sede")
+     private String sede;
+    @Column (name="Proyecto")
+    private String proyecto;
     @Column(name = "tipoEmpleado")
      private String tipoEmpleado;
     @Column(name = "salario")
@@ -50,91 +52,6 @@ public class Usuario  implements java.io.Serializable {
      private String territorio;
 
     public Usuario() {
-    }
-
-    public Usuario(Long id, String password, short administrador, String dni, String nombre, String apellido, String correo, Date fechaNacimiento, String usuario, String puesto, short idSede, String tipoEmpleado, Float salario, String territorio) {
-        this.id = id;
-        this.password = password;
-        this.administrador = administrador;
-        this.dni = dni;
-        this.nombre = nombre;
-        this.apellido = apellido;
-        this.correo = correo;
-        this.fechaNacimiento = fechaNacimiento;
-        this.usuario = usuario;
-        this.puesto = puesto;
-        this.idSede = idSede;
-        this.tipoEmpleado = tipoEmpleado;
-        this.salario = salario;
-        this.territorio = territorio;
-    }
-
-    @Override
-    public String toString() {
-        return "Usuario{" + "id=" + id + ", password=" + password + ", administrador=" + administrador + ", dni=" + dni + ", nombre=" + nombre + ", apellido=" + apellido + ", correo=" + correo + ", fechaNacimiento=" + fechaNacimiento + ", usuario=" + usuario + ", puesto=" + puesto + ", idSede=" + idSede + ", tipoEmpleado=" + tipoEmpleado + ", salario=" + salario + ", territorio=" + territorio + '}';
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 7;
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Usuario other = (Usuario) obj;
-        if (this.administrador != other.administrador) {
-            return false;
-        }
-        if (this.idSede != other.idSede) {
-            return false;
-        }
-        if (!Objects.equals(this.password, other.password)) {
-            return false;
-        }
-        if (!Objects.equals(this.dni, other.dni)) {
-            return false;
-        }
-        if (!Objects.equals(this.nombre, other.nombre)) {
-            return false;
-        }
-        if (!Objects.equals(this.apellido, other.apellido)) {
-            return false;
-        }
-        if (!Objects.equals(this.correo, other.correo)) {
-            return false;
-        }
-        if (!Objects.equals(this.usuario, other.usuario)) {
-            return false;
-        }
-        if (!Objects.equals(this.puesto, other.puesto)) {
-            return false;
-        }
-        if (!Objects.equals(this.tipoEmpleado, other.tipoEmpleado)) {
-            return false;
-        }
-        if (!Objects.equals(this.territorio, other.territorio)) {
-            return false;
-        }
-        if (!Objects.equals(this.id, other.id)) {
-            return false;
-        }
-        if (!Objects.equals(this.fechaNacimiento, other.fechaNacimiento)) {
-            return false;
-        }
-        if (!Objects.equals(this.salario, other.salario)) {
-            return false;
-        }
-        return true;
     }
 
     public Long getId() {
@@ -217,12 +134,20 @@ public class Usuario  implements java.io.Serializable {
         this.puesto = puesto;
     }
 
-    public short getIdSede() {
-        return idSede;
+    public String getSede() {
+        return sede;
     }
 
-    public void setIdSede(short idSede) {
-        this.idSede = idSede;
+    public void setSede(String sede) {
+        this.sede = sede;
+    }
+
+    public String getProyecto() {
+        return proyecto;
+    }
+
+    public void setProyecto(String proyecto) {
+        this.proyecto = proyecto;
     }
 
     public String getTipoEmpleado() {
@@ -248,6 +173,97 @@ public class Usuario  implements java.io.Serializable {
     public void setTerritorio(String territorio) {
         this.territorio = territorio;
     }
+
+    public Usuario(Long id, String password, short administrador, String dni, String nombre, String apellido, String correo, Date fechaNacimiento, String usuario, String puesto, String sede, String proyecto, String tipoEmpleado, Float salario, String territorio) {
+        this.id = id;
+        this.password = password;
+        this.administrador = administrador;
+        this.dni = dni;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.correo = correo;
+        this.fechaNacimiento = fechaNacimiento;
+        this.usuario = usuario;
+        this.puesto = puesto;
+        this.sede = sede;
+        this.proyecto = proyecto;
+        this.tipoEmpleado = tipoEmpleado;
+        this.salario = salario;
+        this.territorio = territorio;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Usuario other = (Usuario) obj;
+        if (this.administrador != other.administrador) {
+            return false;
+        }
+        if (!Objects.equals(this.password, other.password)) {
+            return false;
+        }
+        if (!Objects.equals(this.dni, other.dni)) {
+            return false;
+        }
+        if (!Objects.equals(this.nombre, other.nombre)) {
+            return false;
+        }
+        if (!Objects.equals(this.apellido, other.apellido)) {
+            return false;
+        }
+        if (!Objects.equals(this.correo, other.correo)) {
+            return false;
+        }
+        if (!Objects.equals(this.usuario, other.usuario)) {
+            return false;
+        }
+        if (!Objects.equals(this.puesto, other.puesto)) {
+            return false;
+        }
+        if (!Objects.equals(this.sede, other.sede)) {
+            return false;
+        }
+        if (!Objects.equals(this.proyecto, other.proyecto)) {
+            return false;
+        }
+        if (!Objects.equals(this.tipoEmpleado, other.tipoEmpleado)) {
+            return false;
+        }
+        if (!Objects.equals(this.territorio, other.territorio)) {
+            return false;
+        }
+        if (!Objects.equals(this.id, other.id)) {
+            return false;
+        }
+        if (!Objects.equals(this.fechaNacimiento, other.fechaNacimiento)) {
+            return false;
+        }
+        if (!Objects.equals(this.salario, other.salario)) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "Usuario{" + "id=" + id + ", password=" + password + ", administrador=" + administrador + ", dni=" + dni + ", nombre=" + nombre + ", apellido=" + apellido + ", correo=" + correo + ", fechaNacimiento=" + fechaNacimiento + ", usuario=" + usuario + ", puesto=" + puesto + ", sede=" + sede + ", proyecto=" + proyecto + ", tipoEmpleado=" + tipoEmpleado + ", salario=" + salario + ", territorio=" + territorio + '}';
+    }
+
+   
 
 	
     

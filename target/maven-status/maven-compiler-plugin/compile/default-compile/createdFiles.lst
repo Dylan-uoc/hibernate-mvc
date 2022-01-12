@@ -1,7 +1,15 @@
-com\producto4\model\HibernateUtil.class
+com\producto4\factory\UsuarioDaoFactory.class
 com\producto4\main\Main.class
-com\producto4\model\Proyecto.class
+com\producto4\impl\ProyectoDaoImpl.class
+com\producto4\dao\Dao.class
+com\producto4\factory\ProyectoDaoFactory.class
+com\producto4\factory\SedeDaoFactory.class
+com\producto4\impl\SedeDaoImpl.class
 com\producto4\model\Usuario.class
+com\producto4\impl\UsuarioDaoImpl.class
+com\producto4\model\HibernateUtil.class
+com\producto4\model\Proyecto.class
+com\producto4\controller\ViewAdminController.class
 com\producto4\controller\ViewLoginController.class
 com\producto4\main\Main2.class
 com\producto4\model\Sede.class

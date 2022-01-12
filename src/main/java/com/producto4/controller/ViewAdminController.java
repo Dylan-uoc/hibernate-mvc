@@ -126,6 +126,10 @@ public class ViewAdminController implements Initializable {
     @FXML
     private TableColumn<Map, String> id_sede_column;
     @FXML
+    private TableColumn<Map, String> ubicacion_sede_column;
+    @FXML
+    private TableColumn<Map, String> tipo_sede_column;
+    @FXML
     private TableColumn<Map, String> id_proyecto_column;
     @FXML
     private TableColumn<Map, String> fecha_inicio_column;
@@ -178,6 +182,8 @@ public class ViewAdminController implements Initializable {
     private void fillTable() {
         SedeTable.getItems().clear();    
         id_sede_column.setCellValueFactory(new MapValueFactory<>("ID_SEDE"));
+        ubicacion_sede_column.setCellValueFactory(new MapValueFactory<>("UBICACION_SEDE"));
+        tipo_sede_column.setCellValueFactory(new MapValueFactory<>("TIPO_SEDE"));
 
 	   	ObservableList<Map<String, Object>> items =
 	   	    FXCollections.<Map<String, Object>>observableArrayList();
@@ -189,9 +195,11 @@ public class ViewAdminController implements Initializable {
         List<Sede> resultList = q.list();
         for (Sede next : resultList) {
             item1 = new HashMap<>();
-	   	item1.put("ID_SEDE", next.getId());
+	   	    item1.put("ID_SEDE", next.getId());
+            item1.put("UBICACION_SEDE", next.getId());
+            item1.put("TIPO_SEDE", next.getId());
 
-	   	items.add(item1);
+            items.add(item1);
         }
         SedeTable.getItems().addAll(items);
         

@@ -215,8 +215,8 @@
                                                 <TableView fx:id="SedeTable" maxHeight="16000.0" maxWidth="16000.0" prefHeight="428.0" prefWidth="294.0" tableMenuButtonVisible="true">
                                                    <columns>
                                                       <TableColumn fx:id="id_sede_column" prefWidth="75.0" text="ID_SEDE" />
-                                                      <TableColumn prefWidth="75.0" text="Ubicacion" />
-                                                      <TableColumn prefWidth="75.0" text="Tipo" />
+                                                      <TableColumn fx:id="ubicacion_sede_column" prefWidth="75.0" text="Ubicacion" />
+                                                      <TableColumn fx:id="tipo_sede_column" prefWidth="75.0" text="Tipo" />
                                                    </columns>
                                                 </TableView>
                                              </content>
